@@ -1,5 +1,5 @@
-import math
-n = -1
+# import math
+# n = -1
 
 '''
 when dealing with the -ve number to get the remainder and quotient -->:
