@@ -96,3 +96,6 @@ if __name__=='__main__':
 # 	n = int(input())
 # 	res = find(n)
 # 	print(res)
+
+
+a, b, c = map(int, input().split())
