@@ -98,4 +98,6 @@ if __name__=='__main__':
 # 	print(res)
 
 
-a, b, c = map(int, input().split())
+
+
+
