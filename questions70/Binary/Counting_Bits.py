@@ -1,18 +1,30 @@
 # 338. Counting Bits
 
-# time comp --> O(N^2) space comp --> O(N)
 def countBits(n: int) -> list[int]:
-	res = [0]
+	# time comp --> O(N) space comp --> O(N)
+	dp = [0]*(n+1)
+	offset = 1
 
 	for i in range(1, n+1):
-		cnt = 0
-		while i != 0:
-			i = i & (i-1)
-			cnt += 1
+		if offset*2 == i:
+			offset = i
+		dp[i] = 1 + dp[i - offset]
 
-		res.append(cnt)
+	return dp
 
-	return res
+
+	# time comp --> O(N^2) space comp --> O(N)
+	# res = [0]
+
+	# for i in range(1, n+1):
+	# 	cnt = 0
+	# 	while i != 0:
+	# 		i = i & (i-1)
+	# 		cnt += 1
+
+	# 	res.append(cnt)
+
+	# return res
 
 
 
