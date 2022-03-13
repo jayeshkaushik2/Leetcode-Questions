@@ -1,37 +1,49 @@
 # 3. Longest Substring Without Repeating Characters
 
+# all three solutions work
  def lengthOfLongestSubstring(s: str) -> int:
 	# this is the sliding window problem
 	# time comp --> O(N) space comp --> O(N)
-	charSet = set()
-	l = 0
 	res = 0
-	
-	for i in range(len(s)):
-	    while s[i] in charSet:
-	        charSet.remove(s[l])
+	charset = set()
+	n = len(s)
+	l = 0
+	for r in range(n):
+	    while s[r] in charset:
+	        charset.remove(s[l])
 	        l += 1
-	    charSet.add(s[i])
-	    res = max(res, i-l+1)
+	    charset.add(s[r])
+	    res = max(res, r-l+1)
 	
-	return res
-	        
+	return res       
 	
-	# brute force solution
+	
+	
 	# time comp --> O(N^2) space comp --> O(N)
 	n = len(s)
-	st = []
-	res = 0
+	if n == 0: return 0
 	
-	for i in range(n):
-	    st.append(s[i])
-	    j = i+1
-	    while j < n and s[j] not in st:
-	        st.append(s[j])
-	        j += 1
-	    print(res, st)
-	    res = max(res, len(st))
-	    st = []
+	res = 0
+	cur = ""
+	for i in range(0, n):
+	    while s[i] in cur:
+	        cur = cur[1:]
+	    cur += s[i]
+	    res = max(len(cur), res)
+	
+	return res
+	
+    
+	# brute force solution time comp --> O(N^2) space comp --> O(N)
+	res = 0
+	for i in range(len(s)):
+	    temp = s[i]
+	    for j in range(i+1, len(s)):
+	        if s[j] not in temp:
+	            temp += s[j]
+	        else:
+	            break
+	    res = max(len(temp), res)
 	return res
 
 
